@@ -338,6 +338,9 @@ button:hover, .btn:hover {
     max-width: 98vw;
     height: 100px;
   }
+  .slideshow-container, .slideshow-img {
+    height: 180px;
+  }
 }
 .gallery-grid {
   display: flex;
@@ -588,4 +591,42 @@ button:hover, .btn:hover {
 }
 .contacts-email-box a:hover {
   color: #093b1d;
+}
+.slideshow-container {
+  width: 100vw;
+  max-width: 100vw;
+  height: 180px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  margin: 0 0 2rem 0;
+}
+.slideshow-img {
+  width: 100%;
+  max-width: 900px;
+  height: 180px;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.3s cubic-bezier(0.77,0,0.175,1);
+  display: block;
+}
+.slideshow-img.active {
+  opacity: 1;
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .slideshow-container, .slideshow-img {
+    height: 120px;
+  }
+  .slideshow-img {
+    max-width: 98vw;
+  }
 }

@@ -9,7 +9,7 @@
 <body>
   <header class="topbar">
     <div class="topbar-left">
-      <img src="logo.jpg" alt="Logo Gruppo Tradizioni Augusta" class="logo">
+      <img src="LOGO.png" alt="Logo Gruppo Tradizioni Augusta" class="logo">
       <span class="site-title">Gruppo Tradizioni Augusta</span>
     </div>
     <nav class="topbar-nav">
@@ -25,6 +25,12 @@
       <button type="submit">🔍</button>
     </form>
   </header>
+  <div class="slideshow-container">
+    <img src="sl1.jpeg" class="slideshow-img active" alt="Slideshow 1">
+    <img src="sl2.jpeg" class="slideshow-img" alt="Slideshow 2">
+    <img src="sl3.jpeg" class="slideshow-img" alt="Slideshow 3">
+    <img src="sl4.jpeg" class="slideshow-img" alt="Slideshow 4">
+  </div>
   <main>
     <h1></h1>
     <p class="home-description">Da ragazzi quali siamo, abbiamo l'obiettivo di promuovere la storia locale, le tradizioni, le antiche usanze della nostra Città presso i più giovani.<br>
@@ -66,6 +72,19 @@ Massimiliano Farina</p>
           document.getElementById('lightbox-img').src = '';
         }
       };
+      // Slideshow dissolvenza (fade) 1,3 secondi
+      const slides = document.querySelectorAll('.slideshow-img');
+      let slideIndex = 0;
+      slides.forEach((img, i) => {
+        img.style.display = 'block';
+        if (i === 0) img.classList.add('active');
+        else img.classList.remove('active');
+      });
+      setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+      }, 3000);
     </script>
   </main>
   <footer>
