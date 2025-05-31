@@ -49,7 +49,13 @@
         e.preventDefault();
         const user = document.getElementById('username').value.trim();
         const pass = document.getElementById('password').value.trim();
-        if(user === 'massimiliano.farina' && pass === '1234') {
+        const allowedUsers = [
+          'massimiliano.farina',
+          'stefano.russo',
+          'nicolo.scarpato',
+          'francy.limer'
+        ];
+        if(allowedUsers.includes(user) && pass === 'SanDomenico1') {
           loginBox.style.display = 'none';
           privateArea.style.display = 'block';
         } else {
