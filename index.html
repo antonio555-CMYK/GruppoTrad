@@ -25,8 +25,8 @@
     Viva Augusta, sempre.</p>
     <section class="evento">
       <div class="evento-imgs">
-        <img src="sd1.jpg" alt="Processione San Domenico 1" class="evento-img">
-        <img src="sd2.jpg" alt="Processione San Domenico 2" class="evento-img">
+        <img src="sd1.jpg" alt="Processione San Domenico 1" class="evento-img lightbox-trigger" data-img="sd1.jpg">
+        <img src="sd2.jpg" alt="Processione San Domenico 2" class="evento-img lightbox-trigger" data-img="sd2.jpg">
       </div>
       <div class="evento-desc">
         <p>Nella serata del 24 maggio, durante la processione del fercolo del nostro Patrono, abbiamo portato a termine il progetto "Dal Passato al Futuro: i giovani di Augusta tra Settimana Santa e San Domenico", realizzato in collaborazione con il Liceo Megara Augusta  e le Confraternite dell'Annunziata e dell'Odigitria. Otto ragazzi volenterosi, infatti, hanno portato in processione le varette delle suddette realtà confraternali che, come da tradizione, precedono il carro trionfale sul quale è posto il simulacro di San Domenico.<br><br>
@@ -39,6 +39,28 @@ Viva Augusta, viva San Domenico!<br>
 Massimiliano Farina</p>
       </div>
     </section>
+    <div id="lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" src="" alt="">
+    </div>
+    <script>
+      document.querySelectorAll('.lightbox-trigger').forEach(function(img) {
+        img.addEventListener('click', function() {
+          document.getElementById('lightbox-img').src = this.dataset.img;
+          document.getElementById('lightbox').style.display = 'flex';
+        });
+      });
+      document.getElementById('lightbox-close').onclick = function() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+      };
+      document.getElementById('lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('lightbox-img').src = '';
+        }
+      };
+    </script>
   </main>
   <footer>
     &copy; 2025 Gruppo Tradizioni Augusta
