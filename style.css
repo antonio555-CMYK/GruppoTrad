@@ -208,17 +208,17 @@ button:hover, .btn:hover {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.92);
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 .lightbox-content {
   max-width: 90vw;
-  max-height: 80vh;
+  max-height: 70vh;
   border-radius: 10px;
   box-shadow: 0 4px 24px #000a;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 .lightbox-close {
   position: absolute;
@@ -241,17 +241,69 @@ button:hover, .btn:hover {
 .lightbox-close:hover {
   background: rgba(0,0,0,0.7);
 }
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1100;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  user-select: none;
+}
+.lightbox-arrow.left {
+  left: 32px;
+}
+.lightbox-arrow.right {
+  right: 32px;
+}
+.lightbox-arrow:hover {
+  background: rgba(0,0,0,0.7);
+}
+.lightbox-caption {
+  color: #fff;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  background: rgba(0,0,0,0.4);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  min-width: 200px;
+  max-width: 90vw;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
 @media (max-width: 600px) {
   .lightbox-content {
     max-width: 98vw;
-    max-height: 60vh;
+    max-height: 50vh;
   }
-  .lightbox-close {
-    top: 12px;
-    right: 16px;
+  .lightbox-close, .lightbox-arrow {
     font-size: 2rem;
     width: 36px;
     height: 36px;
+    top: 12px;
+  }
+  .lightbox-arrow.left {
+    left: 8px;
+    top: 45%;
+  }
+  .lightbox-arrow.right {
+    right: 8px;
+    top: 45%;
+  }
+  .lightbox-caption {
+    font-size: 0.98rem;
+    padding: 0.4rem 0.7rem;
   }
 }
 @media (max-width: 700px) {
@@ -285,5 +337,102 @@ button:hover, .btn:hover {
     width: 90vw;
     max-width: 98vw;
     height: 100px;
+  }
+}
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0 2.5rem 0;
+}
+.gallery-img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  background: #f4f4f4;
+  border: 2px solid #f9b23322;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.gallery-img:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+  border-color: var(--secondary-color);
+}
+.news-box {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin: 2rem 0;
+  padding: 1.2rem 1.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.news-cover {
+  flex: 0 0 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news-img {
+  width: 170px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.news-img:hover {
+  transform: scale(1.04);
+}
+.news-description {
+  flex: 1 1 250px;
+}
+.news-description h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: var(--primary, #1a3a5a);
+}
+.news-description p {
+  margin: 0;
+  color: #444;
+}
+@media (max-width: 700px) {
+  .gallery-img {
+    width: 95vw;
+    height: 120px;
+  }
+  .gallery-grid {
+    gap: 0.7rem;
+  }
+  .news-gallery {
+    gap: 0.7rem;
+  }
+  .news-img {
+    width: 95vw;
+    height: 90px;
+  }
+  .news-box {
+    padding: 1rem 0.2rem;
+  }
+  .news-cover {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .news-img {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+  }
+  .news-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }

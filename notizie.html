@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notizie - Gruppo Tradizioni Augusta</title>
+  <title>Storia - Gruppo Tradizioni Augusta</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,13 +15,265 @@
     <nav class="topbar-nav">
       <a href="index.html">Home</a>
       <a href="chi%20siamo.html">Chi siamo</a>
-      <a href="notizie.html" class="active">Notizie</a>
+      <a href="storia.html" class="active">Storia</a>
       <a href="contatti.html">Contatti</a>
+      <a href="galleria.html">Galleria</a>
     </nav>
   </header>
   <main>
-    <h1>Notizie</h1>
-    <p>Benvenuti nella pagina "Notizie" del Gruppo Tradizioni Augusta.</p>
+    <h1>Storia di Augusta</h1>
+    <section class="news-box">
+      <div class="news-cover">
+        <img src="aa1.jpg" alt="Settimana Santa ad Augusta" class="news-img news-lightbox-trigger" data-img="aa1.jpg">
+      </div>
+      <div class="news-description">
+        <h2>Settimana Santa ad Augusta</h2>
+        <p>Un viaggio fotografico e narrativo tra le tradizioni, i riti e le emozioni della Settimana Santa nella nostra città. Scopri la storia di Augusta attraverso immagini e racconti.</p>
+      </div>
+    </section>
+    <section class="news-box">
+      <div class="news-cover">
+        <img src="ae1.jpg" alt="Giovedì Santo" class="news-img ae-lightbox-trigger" data-img="ae1.jpg">
+      </div>
+      <div class="news-description">
+        <h2>Giovedì Santo</h2>
+        <p>Il Giovedì Santo: un momento centrale della tradizione religiosa augustana.</p>
+      </div>
+    </section>
+    <section class="news-box">
+      <div class="news-cover">
+        <img src="af1.jpg" alt="Venerdì Santo" class="news-img af-lightbox-trigger" data-img="af1.jpg">
+      </div>
+      <div class="news-description">
+        <h2>Venerdì Santo</h2>
+        <p>Venerdì Santo: le processioni e i riti della Passione ad Augusta.</p>
+      </div>
+    </section>
+    <section class="news-box">
+      <div class="news-cover">
+        <img src="ah1.jpg" alt="San Domenico" class="news-img ah-lightbox-trigger" data-img="ah1.jpg">
+      </div>
+      <div class="news-description">
+        <h2>San Domenico</h2>
+        <p>La Festa di San Domenico, tra fede e tradizione popolare.</p>
+      </div>
+    </section>
+    <div id="news-lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="news-lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="news-lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="news-lightbox-close">&times;</span>
+      <img class="lightbox-content" id="news-lightbox-img" src="" alt="">
+    </div>
+    <div id="ae-lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="ae-lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="ae-lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="ae-lightbox-close">&times;</span>
+      <img class="lightbox-content" id="ae-lightbox-img" src="" alt="">
+    </div>
+    <div id="af-lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="af-lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="af-lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="af-lightbox-close">&times;</span>
+      <img class="lightbox-content" id="af-lightbox-img" src="" alt="">
+    </div>
+    <div id="ag-lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="ag-lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="ag-lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="ag-lightbox-close">&times;</span>
+      <img class="lightbox-content" id="ag-lightbox-img" src="" alt="">
+      <div class="lightbox-caption" id="ag-lightbox-caption"></div>
+    </div>
+    <div id="ah-lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="ah-lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="ah-lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="ah-lightbox-close">&times;</span>
+      <img class="lightbox-content" id="ah-lightbox-img" src="" alt="">
+    </div>
+    <script>
+      // Settimana Santa ad Augusta
+      const newsImages = [
+        {src: 'aa1.jpg'},
+        {src: 'aa2.jpg'},
+        {src: 'aa3.jpg'},
+        {src: 'aa4.jpg'},
+        {src: 'aa5.jpg'},
+        {src: 'aa6.jpg'},
+        {src: 'aa7.jpg'},
+        {src: 'aa8.jpg'}
+      ];
+      let newsCurrentIndex = 0;
+      function showNewsLightbox(index) {
+        document.getElementById('news-lightbox-img').src = newsImages[index].src;
+        document.getElementById('news-lightbox').style.display = 'flex';
+        newsCurrentIndex = index;
+      }
+      document.querySelector('.news-lightbox-trigger').addEventListener('click', function() {
+        showNewsLightbox(0);
+      });
+      document.getElementById('news-lightbox-close').onclick = function() {
+        document.getElementById('news-lightbox').style.display = 'none';
+        document.getElementById('news-lightbox-img').src = '';
+      };
+      document.getElementById('news-lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('news-lightbox-img').src = '';
+        }
+      };
+      document.getElementById('news-lightbox-prev').onclick = function(e) {
+        e.stopPropagation();
+        newsCurrentIndex = (newsCurrentIndex - 1 + newsImages.length) % newsImages.length;
+        showNewsLightbox(newsCurrentIndex);
+      };
+      document.getElementById('news-lightbox-next').onclick = function(e) {
+        e.stopPropagation();
+        newsCurrentIndex = (newsCurrentIndex + 1) % newsImages.length;
+        showNewsLightbox(newsCurrentIndex);
+      };
+      // Giovedì Santo
+      const aeImages = [
+        {src: 'ae1.jpg'},
+        {src: 'ae2.jpg'},
+        {src: 'ae3.jpg'},
+        {src: 'ae4.jpg'},
+        {src: 'ae5.jpg'},
+        {src: 'ae6.jpg'}
+      ];
+      let aeCurrentIndex = 0;
+      document.querySelector('.ae-lightbox-trigger').addEventListener('click', function() {
+        showAeLightbox(0);
+      });
+      function showAeLightbox(index) {
+        document.getElementById('ae-lightbox-img').src = aeImages[index].src;
+        document.getElementById('ae-lightbox').style.display = 'flex';
+        aeCurrentIndex = index;
+      }
+      document.getElementById('ae-lightbox-close').onclick = function() {
+        document.getElementById('ae-lightbox').style.display = 'none';
+        document.getElementById('ae-lightbox-img').src = '';
+      };
+      document.getElementById('ae-lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('ae-lightbox-img').src = '';
+        }
+      };
+      document.getElementById('ae-lightbox-prev').onclick = function(e) {
+        e.stopPropagation();
+        aeCurrentIndex = (aeCurrentIndex - 1 + aeImages.length) % aeImages.length;
+        showAeLightbox(aeCurrentIndex);
+      };
+      document.getElementById('ae-lightbox-next').onclick = function(e) {
+        e.stopPropagation();
+        aeCurrentIndex = (aeCurrentIndex + 1) % aeImages.length;
+        showAeLightbox(aeCurrentIndex);
+      };
+      // Venerdì Santo
+      const afImages = [
+        {src: 'af1.jpg'},
+        {src: 'af2.jpg'},
+        {src: 'af3.jpg'},
+        {src: 'af4.jpg'},
+        {src: 'af5.jpg'},
+        {src: 'af6.jpg'},
+        {src: 'af7.jpg'},
+        {src: 'af8.jpg'},
+        {src: 'af9.jpg'}
+      ];
+      let afCurrentIndex = 0;
+      document.querySelector('.af-lightbox-trigger').addEventListener('click', function() {
+        showAfLightbox(0);
+      });
+      function showAfLightbox(index) {
+        document.getElementById('af-lightbox-img').src = afImages[index].src;
+        document.getElementById('af-lightbox').style.display = 'flex';
+        afCurrentIndex = index;
+      }
+      document.getElementById('af-lightbox-close').onclick = function() {
+        document.getElementById('af-lightbox').style.display = 'none';
+        document.getElementById('af-lightbox-img').src = '';
+      };
+      document.getElementById('af-lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('af-lightbox-img').src = '';
+        }
+      };
+      document.getElementById('af-lightbox-prev').onclick = function(e) {
+        e.stopPropagation();
+        afCurrentIndex = (afCurrentIndex - 1 + afImages.length) % afImages.length;
+        showAfLightbox(afCurrentIndex);
+      };
+      document.getElementById('af-lightbox-next').onclick = function(e) {
+        e.stopPropagation();
+        afCurrentIndex = (afCurrentIndex + 1) % afImages.length;
+        showAfLightbox(afCurrentIndex);
+      };
+      // San Domenico
+      const ahImages = [
+        {src: 'ah1.jpg'},
+        {src: 'ah2.jpg'},
+        {src: 'ah3.jpg'},
+        {src: 'ah4.jpg'},
+        {src: 'ah5.jpg'},
+        {src: 'ah6.jpg'},
+        {src: 'ah7.jpg'},
+        {src: 'ah8.jpg'},
+        {src: 'ah9.jpg'}
+      ];
+      let ahCurrentIndex = 0;
+      document.querySelector('.ah-lightbox-trigger').addEventListener('click', function() {
+        showAhLightbox(0);
+      });
+      function showAhLightbox(index) {
+        document.getElementById('ah-lightbox-img').src = ahImages[index].src;
+        document.getElementById('ah-lightbox').style.display = 'flex';
+        ahCurrentIndex = index;
+      }
+      document.getElementById('ah-lightbox-close').onclick = function() {
+        document.getElementById('ah-lightbox').style.display = 'none';
+        document.getElementById('ah-lightbox-img').src = '';
+      };
+      document.getElementById('ah-lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('ah-lightbox-img').src = '';
+        }
+      };
+      document.getElementById('ah-lightbox-prev').onclick = function(e) {
+        e.stopPropagation();
+        ahCurrentIndex = (ahCurrentIndex - 1 + ahImages.length) % ahImages.length;
+        showAhLightbox(ahCurrentIndex);
+      };
+      document.getElementById('ah-lightbox-next').onclick = function(e) {
+        e.stopPropagation();
+        ahCurrentIndex = (ahCurrentIndex + 1) % ahImages.length;
+        showAhLightbox(ahCurrentIndex);
+      };
+      // Shortcut tastiera per tutti i lightbox
+      document.addEventListener('keydown', function(e) {
+        if(document.getElementById('news-lightbox').style.display === 'flex') {
+          if(e.key === 'ArrowLeft') document.getElementById('news-lightbox-prev').click();
+          if(e.key === 'ArrowRight') document.getElementById('news-lightbox-next').click();
+          if(e.key === 'Escape') document.getElementById('news-lightbox-close').click();
+        }
+        if(document.getElementById('ae-lightbox').style.display === 'flex') {
+          if(e.key === 'ArrowLeft') document.getElementById('ae-lightbox-prev').click();
+          if(e.key === 'ArrowRight') document.getElementById('ae-lightbox-next').click();
+          if(e.key === 'Escape') document.getElementById('ae-lightbox-close').click();
+        }
+        if(document.getElementById('af-lightbox').style.display === 'flex') {
+          if(e.key === 'ArrowLeft') document.getElementById('af-lightbox-prev').click();
+          if(e.key === 'ArrowRight') document.getElementById('af-lightbox-next').click();
+          if(e.key === 'Escape') document.getElementById('af-lightbox-close').click();
+        }
+        if(document.getElementById('ah-lightbox').style.display === 'flex') {
+          if(e.key === 'ArrowLeft') document.getElementById('ah-lightbox-prev').click();
+          if(e.key === 'ArrowRight') document.getElementById('ah-lightbox-next').click();
+          if(e.key === 'Escape') document.getElementById('ah-lightbox-close').click();
+        }
+      });
+    </script>
   </main>
   <footer>
     &copy; 2025 Gruppo Tradizioni Augusta

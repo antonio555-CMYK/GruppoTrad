@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria - Tradizioni Augusta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <img src="logo.jpg" alt="Logo Gruppo Tradizioni Augusta" class="logo">
+      <span class="site-title">Gruppo Tradizioni Augusta</span>
+    </div>
+    <nav class="topbar-nav">
+      <a href="index.html">Home</a>
+      <a href="chi%20siamo.html">Chi siamo</a>
+      <a href="notizie.html">Notizie</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="galleria.html">Galleria</a>
+    </nav>
+  </header>
+  <main>
+    <h1>San Domenico</h1>
+    <div class="gallery-grid">
+      <img src="ah1.jpg" alt="San Domenico 1" class="gallery-img lightbox-trigger" data-img="ah1.jpg" data-caption="">
+      <img src="ah2.jpg" alt="San Domenico 2" class="gallery-img lightbox-trigger" data-img="ah2.jpg" data-caption="">
+      <img src="ah3.jpg" alt="San Domenico 3" class="gallery-img lightbox-trigger" data-img="ah3.jpg" data-caption="">
+      <img src="ah4.jpg" alt="San Domenico 4" class="gallery-img lightbox-trigger" data-img="ah4.jpg" data-caption="">
+      <img src="ah5.jpg" alt="San Domenico 5" class="gallery-img lightbox-trigger" data-img="ah5.jpg" data-caption="">
+      <img src="ah6.jpg" alt="San Domenico 6" class="gallery-img lightbox-trigger" data-img="ah6.jpg" data-caption="">
+      <img src="ah7.jpg" alt="San Domenico 7" class="gallery-img lightbox-trigger" data-img="ah7.jpg" data-caption="">
+      <img src="ah8.jpg" alt="San Domenico 8" class="gallery-img lightbox-trigger" data-img="ah8.jpg" data-caption="">
+      <img src="ah9.jpg" alt="San Domenico 9" class="gallery-img lightbox-trigger" data-img="ah9.jpg" data-caption="">
+    </div>
+    <div id="lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" src="" alt="">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <script>
+      // Seleziona solo le immagini visibili per il click, ma tutte per il lightbox
+      const images = Array.from(document.querySelectorAll('.gallery-img'));
+      let currentIndex = 0;
+      // Rendi cliccabile solo la copertina, ma il lightbox scorre tutte le immagini
+      images.forEach((img, idx) => {
+        if (img.style.display !== 'none') {
+          img.addEventListener('click', function() {
+            showLightbox(idx);
+          });
+        }
+      });
+      function showLightbox(index) {
+        document.getElementById('lightbox-img').src = images[index].dataset.img;
+        document.getElementById('lightbox-caption').textContent = images[index].dataset.caption || '';
+        document.getElementById('lightbox').style.display = 'flex';
+        currentIndex = index;
+      }
+      document.getElementById('lightbox-close').onclick = function() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+        document.getElementById('lightbox-caption').textContent = '';
+      };
+      document.getElementById('lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('lightbox-img').src = '';
+          document.getElementById('lightbox-caption').textContent = '';
+        }
+      };
+      document.getElementById('lightbox-prev').onclick = function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showLightbox(currentIndex);
+      };
+      document.getElementById('lightbox-next').onclick = function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showLightbox(currentIndex);
+      };
+      document.addEventListener('keydown', function(e) {
+        if(document.getElementById('lightbox').style.display === 'flex') {
+          if(e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+          if(e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+          if(e.key === 'Escape') document.getElementById('lightbox-close').click();
+        }
+      });
+    </script>
+  </main>
+  <footer>
+    &copy; 2025 Gruppo Tradizioni Augusta
+  </footer>
+</body>
+</html>

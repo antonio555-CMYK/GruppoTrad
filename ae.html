@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria AE - Tradizioni Augusta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <img src="logo.jpg" alt="Logo Gruppo Tradizioni Augusta" class="logo">
+      <span class="site-title">Gruppo Tradizioni Augusta</span>
+    </div>
+    <nav class="topbar-nav">
+      <a href="index.html">Home</a>
+      <a href="chi%20siamo.html">Chi siamo</a>
+      <a href="notizie.html">Notizie</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="galleria.html">Galleria</a>
+      <a href="ae.html" class="active">Galleria AE</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Galleria AE</h1>
+    <div class="gallery-grid">
+      <img src="ae1.jpg" alt="AE 1" class="gallery-img lightbox-trigger" data-img="ae1.jpg" data-caption="Galleria AE">
+      <img src="ae2.jpg" alt="AE 2" class="gallery-img lightbox-trigger" data-img="ae2.jpg" data-caption="Galleria AE">
+      <img src="ae3.jpg" alt="AE 3" class="gallery-img lightbox-trigger" data-img="ae3.jpg" data-caption="Galleria AE">
+      <img src="ae4.jpg" alt="AE 4" class="gallery-img lightbox-trigger" data-img="ae4.jpg" data-caption="Galleria AE">
+      <img src="ae5.jpg" alt="AE 5" class="gallery-img lightbox-trigger" data-img="ae5.jpg" data-caption="Galleria AE">
+      <img src="ae6.jpg" alt="AE 6" class="gallery-img lightbox-trigger" data-img="ae6.jpg" data-caption="Galleria AE">
+    </div>
+    <div id="lightbox" class="lightbox" style="display:none;">
+      <span class="lightbox-arrow left" id="lightbox-prev">&#8592;</span>
+      <span class="lightbox-arrow right" id="lightbox-next">&#8594;</span>
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" src="" alt="">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <script>
+      const images = Array.from(document.querySelectorAll('.gallery-img'));
+      let currentIndex = 0;
+      function showLightbox(index) {
+        const img = images[index];
+        document.getElementById('lightbox-img').src = img.dataset.img;
+        document.getElementById('lightbox-caption').textContent = img.dataset.caption || '';
+        document.getElementById('lightbox').style.display = 'flex';
+        currentIndex = index;
+      }
+      images.forEach((img, idx) => {
+        img.addEventListener('click', function() {
+          showLightbox(idx);
+        });
+      });
+      document.getElementById('lightbox-close').onclick = function() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+        document.getElementById('lightbox-caption').textContent = '';
+      };
+      document.getElementById('lightbox').onclick = function(e) {
+        if(e.target === this) {
+          this.style.display = 'none';
+          document.getElementById('lightbox-img').src = '';
+          document.getElementById('lightbox-caption').textContent = '';
+        }
+      };
+      document.getElementById('lightbox-prev').onclick = function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showLightbox(currentIndex);
+      };
+      document.getElementById('lightbox-next').onclick = function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showLightbox(currentIndex);
+      };
+      document.addEventListener('keydown', function(e) {
+        if(document.getElementById('lightbox').style.display === 'flex') {
+          if(e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+          if(e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+          if(e.key === 'Escape') document.getElementById('lightbox-close').click();
+        }
+      });
+    </script>
+  </main>
+  <footer>
+    &copy; 2025 Gruppo Tradizioni Augusta
+  </footer>
+</body>
+</html>
