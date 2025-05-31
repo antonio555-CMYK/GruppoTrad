@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Privata - Gruppo Tradizioni Augusta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <img src="logo.jpg" alt="Logo Gruppo Tradizioni Augusta" class="logo">
+      <span class="site-title">Gruppo Tradizioni Augusta</span>
+    </div>
+    <nav class="topbar-nav">
+      <a href="index.html">Home</a>
+      <a href="chi%20siamo.html">Chi siamo</a>
+      <a href="storia.html">Storia</a>
+      <a href="galleria.html">Galleria</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="area-privata.html" class="active">Area Privata</a>
+    </nav>
+  </header>
+  <main>
+    <div id="login-box" class="private-login-box">
+      <h2>Accesso Area Privata</h2>
+      <form id="login-form" autocomplete="off">
+        <input type="text" id="username" placeholder="Nome utente" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Accedi</button>
+        <div id="login-error" class="login-error" style="display:none;">Nome utente o password errati.</div>
+      </form>
+    </div>
+    <div id="private-area" class="private-area" style="display:none;">
+      <h2>Archivio Documenti Riservati</h2>
+      <ul class="private-doc-list">
+        <li><a href="documenti/regolamento.pdf" target="_blank">Regolamento</a></li>
+        <li><a href="documenti/lista-membri.pdf" target="_blank">Lista Membri</a></li>
+        <li><a href="documenti/bilancio.pdf" target="_blank">Bilancio</a></li>
+        <li><a href="documenti/entrate-uscite.pdf" target="_blank">Entrate e Uscite</a></li>
+        <li><a href="documenti/registro-quote.pdf" target="_blank">Registro Quote Mensili</a></li>
+      </ul>
+    </div>
+    <script>
+      const loginForm = document.getElementById('login-form');
+      const loginBox = document.getElementById('login-box');
+      const privateArea = document.getElementById('private-area');
+      const loginError = document.getElementById('login-error');
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = document.getElementById('username').value.trim();
+        const pass = document.getElementById('password').value.trim();
+        if(user === 'massimiliano.farina' && pass === '1234') {
+          loginBox.style.display = 'none';
+          privateArea.style.display = 'block';
+        } else {
+          loginError.style.display = 'block';
+        }
+      });
+    </script>
+  </main>
+  <footer>
+    &copy; 2025 Gruppo Tradizioni Augusta
+  </footer>
+</body>
+</html>

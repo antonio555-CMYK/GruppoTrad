@@ -16,51 +16,35 @@
       <a href="index.html">Home</a>
       <a href="chi%20siamo.html" class="active">Chi siamo</a>
       <a href="storia.html">Storia</a>
+      <a href="galleria.html">Galleria</a>
       <a href="contatti.html">Contatti</a>
+      <a href="area-privata.html">Area Privata</a>
     </nav>
+    <form class="search-bar" action="#" method="get" onsubmit="return searchSite(event)">
+      <input type="text" name="q" placeholder="Cerca..." aria-label="Cerca nel sito">
+      <button type="submit">🔍</button>
+    </form>
   </header>
   <main>
     <h1>Chi siamo</h1>
-    <p>Benvenuti nella pagina "Chi siamo" del Gruppo Tradizioni Augusta.</p>
+    <div class="about-description">
+      Il Gruppo Tradizioni Augusta nasce nel giugno del 2023 dal desiderio da parte di alcuni ragazzi di custodire, valorizzare e trasmettere le tradizioni popolari della città di Augusta.<br>
+      L'obbiettivo è quello di rendere la tradizione viva e partecipata.<br>
+      Grazie alla sinergia con l'amministrazione comunale, con il mondo associazionistico cittadino, gli istituti e le confraternite, organizziamo mostre, incontri e progetti finalizzati a promuovere la storia e la cultura cittadina tra i giovani.<br>
+      Siamo convinti che le tradizioni non si conservano restando fermi, ma camminando insieme, riscoprendo ogni giorno la bellezza di ciò che ci è stato trasmesso e oggi vogliamo consegnare a chi verrà dopo di noi.
+    </div>
   </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <script>
+function searchSite(event) {
+  event.preventDefault();
+  const query = event.target.q.value.trim().toLowerCase();
+  if (!query) return false;
+  // Semplice ricerca: reindirizza a Google con site: per il dominio del sito
+  window.open('https://www.google.com/search?q=site:' + window.location.hostname + ' ' + encodeURIComponent(query), '_blank');
+  return false;
+}
+</script>
   
   <footer>
     &copy; 2025 Gruppo Tradizioni Augusta
