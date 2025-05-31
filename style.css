@@ -667,22 +667,124 @@ button:hover, .btn:hover {
   opacity: 1;
   z-index: 2;
 }
-@media (max-width: 900px) {
+@media (max-width: 600px) {
+  header.topbar {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    border-bottom-width: 2px;
+  }
   .header-flex {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    align-items: stretch;
+    gap: 0.3rem;
+  }
+  .topbar-left {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.4rem;
+  }
+  .logo {
+    height: 38px;
+    min-width: 38px;
+    max-width: 80vw;
+    margin-bottom: 0.2rem;
+  }
+  .site-title {
+    font-size: 0.92rem;
+    text-align: left;
+  }
+  .topbar-nav {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0.2rem 0.3rem;
+    font-size: 0.93rem;
+    margin-left: 0.2rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .topbar-nav a {
+    font-size: 0.93rem;
+    padding: 0.2rem 0.5rem;
   }
   .search-bar {
-    margin-left: 0.5rem;
-    min-width: 70px;
+    margin-left: 0;
+    margin-top: 0.4rem;
+    min-width: 60px;
     max-width: 100px;
-    height: 24px;
+    height: 22px;
+    padding: 2px 4px;
   }
-  .slideshow-container, .slideshow-img {
-    height: 120px;
+  .search-bar input[type="text"] {
+    font-size: 0.88rem;
+    width: 40px;
+    padding: 2px 2px;
   }
-  .slideshow-img {
-    max-width: 98vw;
+  main {
+    max-width: 99vw;
+    padding: 0.5rem 0.1rem 1.2rem 0.1rem;
+    min-height: 50vh;
+  }
+  .home-description, .about-description, .contacts-description {
+    font-size: 0.97rem;
+    padding: 0.7rem 0.5rem;
+    max-width: 99vw;
+  }
+  .gallery-grid {
+    gap: 0.7rem;
+    margin: 1rem 0 1.2rem 0;
+  }
+  .gallery-img {
+    width: 98vw;
+    height: 90px;
+    max-width: 99vw;
+  }
+  .evento-imgs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .evento-img {
+    width: 98vw;
+    height: 80px;
+    max-width: 99vw;
+  }
+  .news-box {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.7rem 0.3rem;
+  }
+  .news-cover {
+    flex: 0 0 90px;
+  }
+  .news-img {
+    width: 90vw;
+    height: 70px;
+    max-width: 99vw;
+  }
+  .private-login-box, .private-area {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    max-width: 99vw;
+  }
+  .contacts-social {
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .social-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .social-icon img {
+    width: 20px;
+    height: 20px;
+  }
+  .contacts-email-box {
+    font-size: 0.97rem;
+    padding: 0.7rem 0.5rem;
+    max-width: 99vw;
+  }
+  footer {
+    font-size: 0.88rem;
+    padding: 0.5rem 0;
+    margin-top: 1rem;
   }
 }
+
+/* ...existing code... */
