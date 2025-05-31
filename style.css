@@ -199,6 +199,61 @@ button:hover, .btn:hover {
   color: #fff;
 }
 
+/* Stili per la lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px #000a;
+  margin-bottom: 1.5rem;
+}
+.lightbox-close {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1100;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.lightbox-close:hover {
+  background: rgba(0,0,0,0.7);
+}
+@media (max-width: 600px) {
+  .lightbox-content {
+    max-width: 98vw;
+    max-height: 60vh;
+  }
+  .lightbox-close {
+    top: 12px;
+    right: 16px;
+    font-size: 2rem;
+    width: 36px;
+    height: 36px;
+  }
+}
 @media (max-width: 700px) {
   .topbar {
     flex-direction: column;
