@@ -1,0 +1,234 @@
+/*
+  Stile moderno per il nuovo sito Gruppo Tradizioni Augusta
+  Autore: antonio ramaci
+  Data: 2025-05-31
+*/
+
+:root {
+  --primary-color: #093b1d;
+  --secondary-color: #ffffff;
+  --background-color: #047900;
+  --text-color: #ffffff;
+  --accent-color: #b1999b;
+  --border-radius: 12px;
+  --font-family: 'Montserrat', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #047900 0%, #1a4d2e 100%);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+header.topbar {
+  background: rgba(9,59,29,0.98);
+  color: #fff;
+  padding: 1.2rem 1rem 1rem 1rem;
+  text-align: center;
+  border-bottom: 4px solid var(--secondary-color);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.logo {
+  height: 38px;
+  width: auto;
+  border-radius: 8px;
+  background: #fff;
+  padding: 2px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+}
+
+.site-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 4px #0002;
+  color: #f9b233;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 1.2rem;
+  background: #e0e0e0;
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  margin-left: auto;
+  box-shadow: 0 1px 6px #0001;
+}
+
+.topbar-nav a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: color 0.2s, background 0.2s;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  background: transparent;
+  position: relative;
+  letter-spacing: 0.03em;
+}
+
+.topbar-nav a.active,
+.topbar-nav a:hover,
+.topbar-nav a:focus {
+  background: #bdbdbd;
+  color: #047900;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  padding: 1.2rem 1.2rem 2rem 1.2rem;
+  min-height: 60vh;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-top: 0.5rem;
+  font-family: 'Montserrat', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.home-description {
+  font-family: 'Montserrat', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-size: 1.05rem;
+  color: #047900;
+  background: #fffbe7;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem auto 0 auto;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  font-style: italic;
+}
+
+.evento {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  margin: 2rem auto 0 auto;
+  max-width: 900px;
+  padding: 1.2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.evento-imgs {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  justify-content: center;
+  width: 100%;
+}
+.evento-img {
+  width: 180px;
+  max-width: 40vw;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  background: #f4f4f4;
+  border: 2px solid #f9b23322;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.evento-img:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+  border-color: var(--secondary-color);
+}
+.evento-desc {
+  width: 100%;
+  font-size: 0.98rem;
+  color: #222;
+  line-height: 1.7;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+footer {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 0.7rem 0;
+  margin-top: 2rem;
+  border-top: 4px solid var(--secondary-color);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+button, .btn {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+button:hover, .btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .topbar-nav {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 0.7rem;
+  }
+  .logo {
+    height: 28px;
+  }
+  .site-title {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 800px) {
+  main, .evento {
+    padding: 0.7rem 0.2rem;
+  }
+  .evento-imgs {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .evento-img {
+    width: 90vw;
+    max-width: 98vw;
+    height: 100px;
+  }
+}
