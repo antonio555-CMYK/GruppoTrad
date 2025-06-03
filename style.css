@@ -788,3 +788,24 @@ button:hover, .btn:hover {
 }
 
 /* ...existing code... */
+<script>
+  // Imposta l'orario di apertura e chiusura (24h)
+  const oraApertura = 8;   // 8:00
+  const oraChiusura = 20;  // 23:00
+
+  const oraAttuale = new Date().getHours();
+
+  if (oraAttuale < oraApertura || oraAttuale >= oraChiusura) {
+    // Nasconde tutto il body e mostra un messaggio
+    document.addEventListener("DOMContentLoaded", function() {
+      document.body.innerHTML = `
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:#fff;font-family:Roboto,sans-serif;">
+          <div style="text-align:center;">
+            <h2>Sito non disponibile</h2>
+            <p>L'area privata è accessibile solo dalle ${oraApertura}:00 alle ${oraChiusura}:00.</p>
+          </div>
+        </div>
+      `;
+    });
+  }
+</script>
