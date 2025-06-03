@@ -791,7 +791,7 @@ button:hover, .btn:hover {
 <script>
   // Imposta l'orario di apertura e chiusura (24h)
   const oraApertura = 8;   // 8:00
-  const oraChiusura = 20;  // 23:00
+  const oraChiusura = 23;  // 23:00
 
   const oraAttuale = new Date().getHours();
 
