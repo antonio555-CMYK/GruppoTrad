@@ -147,3 +147,36 @@ document.addEventListener('click', function(e) {
   </script>
 </body>
 </html>
+<script>
+  // Orario di apertura: 7:31 (7 ore e 31 minuti)
+  const oraApertura = 7;
+  const minutiApertura = 31;
+  // Orario di chiusura: 23:00 (23 ore e 0 minuti)
+  const oraChiusura = 23;
+  const minutiChiusura = 0;
+
+  const now = new Date();
+  const ore = now.getHours();
+  const minuti = now.getMinutes();
+
+  function isChiuso(ore, minuti) {
+    // Dalle 23:00 in poi
+    if (ore > oraChiusura || (ore === oraChiusura && minuti >= minutiChiusura)) return true;
+    // Prima delle 7:31
+    if (ore < oraApertura || (ore === oraApertura && minuti < minutiApertura)) return true;
+    return false;
+  }
+
+  if (isChiuso(ore, minuti)) {
+    document.addEventListener("DOMContentLoaded", function() {
+      document.body.innerHTML = `
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:#fff;font-family:Roboto,sans-serif;">
+          <div style="text-align:center;">
+            <h2>Sito non disponibile</h2>
+            <p>Il sito è accessibile solo dalle 07:31 alle 23:00.</p>
+          </div>
+        </div>
+      `;
+    });
+  }
+</script>
