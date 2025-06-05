@@ -21,9 +21,6 @@
         <a href="contatti.html">Contatti</a>
         <a href="area-privata.html">Area Privata</a>
       </nav>
-      <form class="search-bar" action="#" method="get" onsubmit="return searchSite(event)">
-        <input type="text" name="q" placeholder="Cerca..." aria-label="Cerca nel sito">
-        <button type="submit">🔍</button>
       </form>
     </div>
   </header>
@@ -82,56 +79,6 @@ Massimiliano Farina</p>
         slides[slideIndex].classList.add('active');
       }, 3000);
 
-      function searchSite(event) {
-        event.preventDefault();
-        const query = event.target.q.value.trim().toLowerCase();
-        if (!query) return false;
-        // Ricerca interna tra le pagine pubbliche
-        const results = SEARCH_INDEX.filter(page =>
-          page.keywords.some(k => k.includes(query)) || page.title.toLowerCase().includes(query)
-        );
-        showSearchResults(results, query);
-        return false;
-      }
-      function showSearchResults(results, query) {
-        let box = document.getElementById('search-results-box');
-        if (!box) {
-          box = document.createElement('div');
-          box.id = 'search-results-box';
-          box.className = 'search-results-box';
-          document.querySelector('.search-bar').appendChild(box);
-        }
-        if (results.length === 0) {
-          box.innerHTML = '<div class="search-noresult">Nessun risultato per "' + query + '"</div>';
-        } else {
-          box.innerHTML = results.map(r =>
-            `<a href="${r.url}"><strong>${r.title}</strong></a>`
-          ).join('');
-        }
-        box.style.display = 'block';
-      }
-      // Mostra risultati anche mentre si digita
-      const searchInput = document.querySelector('.search-bar input[type="text"]');
-      if (searchInput) {
-        searchInput.addEventListener('input', function() {
-          const query = this.value.trim().toLowerCase();
-          if (!query) {
-            const box = document.getElementById('search-results-box');
-            if (box) box.style.display = 'none';
-            return;
-          }
-          const results = SEARCH_INDEX.filter(page =>
-            page.keywords.some(k => k.includes(query)) || page.title.toLowerCase().includes(query)
-          );
-          showSearchResults(results, query);
-        });
-      }
-      document.addEventListener('click', function(e) {
-        const box = document.getElementById('search-results-box');
-        if (box && !box.contains(e.target) && !e.target.closest('.search-bar')) {
-          box.style.display = 'none';
-        }
-      });
     </script>
   </main>
   <footer>
